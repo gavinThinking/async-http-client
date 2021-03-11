@@ -19,10 +19,10 @@ import org.asynchttpclient.test.EchoHandler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import static org.asynchttpclient.test.TestUtils.addHttpConnector;
 
@@ -36,7 +36,7 @@ public abstract class AbstractBasicTest {
   protected int port1 = -1;
   protected int port2 = -1;
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeClass
   public void setUpGlobal() throws Exception {
     server = new Server();
     ServerConnector connector1 = addHttpConnector(server);
@@ -50,7 +50,7 @@ public abstract class AbstractBasicTest {
     logger.info("Local HTTP server started successfully");
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterClass
   public void tearDownGlobal() throws Exception {
     if (server != null) {
       server.stop();

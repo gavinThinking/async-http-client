@@ -27,7 +27,7 @@ public class CompletableFutures {
   public static void main(String[] args) throws IOException {
     try (AsyncHttpClient asyncHttpClient = asyncHttpClient()) {
       asyncHttpClient
-              .prepareGet("http://www.example.com/")
+              .prepareGet("https://www.openshift.com")
               .execute()
               .toCompletableFuture()
               .thenApply(Response::getResponseBody)
